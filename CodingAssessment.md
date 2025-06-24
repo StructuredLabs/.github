@@ -11,15 +11,27 @@
 ## https://github.com/StructuredLabs/preswald
 
 ---
-
-## 📦 1. Setup environment
+## 📦 1. Setup Environment
 
 * Please use Google Chrome to complete this assessment.
 
-1. Go to [https://app.preswald.com](https://app.preswald.com)  
-2. Sign in using your GitHub account  
-3. Click **"+ New project"** to create a fresh workspace  
-4. Upload the provided CSV file via the **Upload** button
+1. **Install Preswald CLI**
+   ```bash
+   pip install preswald
+   ```
+
+2. **Create a new project**
+   ```bash
+   preswald init my_assessment_app
+   cd my_assessment_app
+   ```
+
+3. **Start the development server**
+   ```bash
+   preswald run
+   ```
+
+4. **Open your browser** to the local URL shown in the terminal (typically `http://localhost:8000`)
 
 ---
 
@@ -30,60 +42,60 @@ Select/download a dataset from any of these sources:
 - [Kaggle Datasets](https://www.kaggle.com/datasets)
 - [Data.gov](https://www.data.gov/)
 - [Open Data Repositories](https://github.com/awesomedata/awesome-public-datasets)
-- Any csv (e.g., weather, finance, sports stats)
+- Any CSV file (e.g., weather, finance, sports stats)
 
-Place your dataset in the data/ folder of your project.
+Place your dataset in the `data/` folder of your project and update the `preswald.toml` configuration file to reference it.
 
 ---
 
 ### **3. Implement Your Preswald App**
 
-Modify \`hello.py\` to include the following:
+Modify `hello.py` to include the following:
 
 1. **Load the dataset**
         
-    \`\`\`   
+    ```python
     from preswald import connect, get_df
         
     connect()  # Initialize connection to preswald.toml data sources
     df = get_df("my_dataset")  # Load data
-    \`\`\`
+    ```
 
 2. **Query or manipulate the data**
             
-    \`\`\`
+    ```python
     from preswald import query
         
     sql = "SELECT * FROM my_dataset WHERE value > 50"
     filtered_df = query(sql, "my_dataset")
-    \`\`\`
+    ```
 
 3. **Build an interactive UI**
 
-    \`\`\`
+    ```python
     from preswald import table, text
     
     text("# My Data Analysis App")
     table(filtered_df, title="Filtered Data")
-    \`\`\`
+    ```
 
     - Add user controls:
 
-    \`\`\`
+    ```python
     from preswald import slider, view
     threshold = slider("Threshold", min_val=0, max_val=100, default=50)
     table(df[df["value"] > threshold], title="Dynamic Data View")
-    \`\`\`
+    ```
 
 4. **Create a visualization**
 
-    \`\`\`
+    ```python
     from preswald import plotly
     import plotly.express as px
     
     fig = px.scatter(df, x="column1", y="column2", color="category")
     plotly(fig)
-    \`\`\`
+    ```
 
 ### 🔹 Add Other Widgets
 
@@ -93,16 +105,24 @@ Add other widgets to your app. Reference the docs here: [Preswald SDK](https://d
 
 ## 👀 4. Preview Your App
 
-Use the **Preview** tab in the IDE to view your app.
+Your app will automatically reload in the browser as you make changes to `hello.py`. The development server provides live preview functionality.
 
 ---
 
-## 🚀 5. Get a Shareable Link
+## 🚀 5. Export and Deploy Your App
 
-1. Generate an API key in: **Organization > Manage > Settings > API Keys**
-2. Deploy your app using the Share button
-    - Enter your **GitHub username** and **API key**
-4. View the status of the deployment in the **Apps** tab
+1. **Export your app as a static site**
+   ```bash
+   preswald export
+   ```
+
+2. **Deploy to any static hosting service**
+   - **GitHub Pages**: Push the exported files to a GitHub repository
+   - **Netlify**: Drag and drop the exported folder
+   - **Vercel**: Import your repository
+   - **Any web server**: Upload the exported files
+
+3. **Get a shareable link** from your chosen hosting platform
 
 After deploying, you'll get a shareable public link. Save this for submitting your assessment.
 
@@ -116,4 +136,4 @@ Pick one, fork the repo, build the solution, and open a pull request. [Contribut
 
 ---
 
-## 📤 Submit your finished app ➡️ https://www.preswald.com/fizzbuzz 
+## [📤 Submit your finished app ➡️](https://forms.gle/ATZKNXkCZMruMM1t8) 
