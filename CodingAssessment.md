@@ -111,20 +111,11 @@ Your app will automatically reload in the browser as you make changes to `hello.
 
 ## 🚀 5. Export and Deploy Your App
 
-1. **Export your app as a static site**
+**Export your app as a static site**
    ```bash
    preswald export
    ```
 
-2. **Deploy to any static hosting service**
-   - **GitHub Pages**: Push the exported files to a GitHub repository
-   - **Netlify**: Drag and drop the exported folder
-   - **Vercel**: Import your repository
-   - **Any web server**: Upload the exported files
-
-3. **Get a shareable link** from your chosen hosting platform
-
-After deploying, you'll get a shareable public link. Save this for submitting your assessment.
 
 ---
 
@@ -136,4 +127,4 @@ Pick one, fork the repo, build the solution, and open a pull request. [Contribut
 
 ---
 
-## [📤 Submit your finished app ➡️](https://forms.gle/ATZKNXkCZMruMM1t8) 
+## [📤 Submit your finished app code ➡️](https://forms.gle/ATZKNXkCZMruMM1t8) 
